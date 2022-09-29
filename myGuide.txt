@@ -1,0 +1,14 @@
+add font awesome
+
+1. Add SVG Core
+npm i --save @fortawesome/fontawesome-svg-core
+
+2. Add Icon Packages
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+
+3. Add the React Component
+npm i --save @fortawesome/react-fontawesome@latest
+
+npm install --save react date-fns
+npm install --save react-date-range

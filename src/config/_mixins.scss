@@ -1,0 +1,9 @@
+
+@mixin container_flex($width: 100%, $max-width: 1024px, $gap: 20px) {
+ display: flex;
+ justify-content: space-between; 
+ width: $width;
+ margin: 0 auto;
+ max-width: $max-width;
+ gap: $gap;
+}

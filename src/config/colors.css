@@ -1,0 +1,12 @@
+:root {
+  --main-color: #0071c2;
+  --main-bg-color: #003580;
+  --white: white;
+  --searchText: lightgray;
+  --searchTextd:#C9c7c6;
+  --search-box-border: #febb02;
+  --my-mixin: {
+    background: #256dbd;
+    color: #f5f5f5;
+  } ;
+}

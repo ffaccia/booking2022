@@ -1,0 +1,146 @@
+@import '../../config/all_config.css';
+.header {
+  background-color: var(--main-bg-color);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 1024px;
+  margin: 20px 0 100px 0;
+}
+
+.headerContainer.listMode {
+  margin: 20px 0 30px 0;
+}
+
+.headerList {
+  display: flex;
+  gap: 3rem;
+}
+
+.headerListItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.headerListItem.active {
+  border: 1px solid var(--white);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.headerTitle {
+  margin-top: 1rem;
+}
+
+.headerDesc {
+  margin-top: 0.4rem;
+}
+
+.headerBtn {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  background-color: var(--main-color);
+  color: white;
+  border: 1px solid white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.headerSearch {
+  height: 30px;
+  background-color: var(--white);
+  color: var(--searchTextd);
+  border: 3px solid var(--search-box-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.headerIcon {
+  color: var(--searchTextd);
+}
+
+.headerSearchText {
+  color: var(--searchTextd);
+}
+
+.headerSearchItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.headerSearchDate {
+  position: absolute;
+  top: 50px;
+}
+
+.headerSearchDate2Date {
+  cursor: pointer;
+}
+
+.headerSearchOption {
+  position: relative;
+}
+
+.headerSearchRoom {
+  cursor: pointer;
+}
+
+.options {
+  position: absolute;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  background: var(--white);
+  color: var(--searchTextd);
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.optionItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem;
+  width: 150px;
+}
+
+.optionCounter {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.optionCounterButton {
+  border: 1px solid var(--main-bg-color);
+  background: white;
+  color: var(--main-bg-color);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.optionCounterButton:disabled {
+  cursor: not-allowed;
+}
+
+.optionCounterNumber {
+  width: 0.8rem;
+}
