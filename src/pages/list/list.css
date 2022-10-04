@@ -1,0 +1,87 @@
+@import '../../config/colors.css';
+.listContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.listWrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1124px;
+  gap: 1.5rem;
+}
+
+.listSearch {
+  position: sticky;
+  top: 30px;
+  flex: 1;
+  background: var(--search-box-border);
+  border-radius: 10px;
+  height: max-content;
+}
+.listSearch .lsTitle {
+  font-size: 1.6rem;
+  color: var(--searchTextOrng);
+  padding: 0.7rem 0 0 0.7rem;
+}
+.listSearch .lsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+.listSearch .lsItem label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.listSearch .lsItem input[type=text] {
+  height: 1.7rem;
+  border: none;
+  font-size: 0.85rem;
+  padding: 5px;
+}
+.listSearch .lsItem span.setDateList {
+  display: flex;
+  align-items: center;
+  height: 1.7rem;
+  border: none;
+  font-size: 0.85rem;
+  padding: 5px;
+  background-color: white;
+}
+.listSearch .lsItem .lsOptionItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.listSearch .lsItem .lsOptionItem span {
+  padding-top: 0.5rem;
+  padding-left: 0.9rem;
+  font-size: 0.8rem;
+}
+.listSearch .lsItem .lsOptionItem input[type=text], .listSearch .lsItem .lsOptionItem input[type=number] {
+  width: 20%;
+}
+.listSearch .lsItem .lsOptionItem input[type=text]:focus, .listSearch .lsItem .lsOptionItem input[type=number]:focus {
+  outline-color: #00aaee;
+}
+.listSearch button[type=submit] {
+  background: var(--main-bg-color);
+  color: white;
+  border: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: x-large;
+  font-weight: 600;
+  width: 85%;
+  margin: 1rem 2rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.listSearch button[type=submit]:hover {
+  background: hsla(calc(var(--main-bg-color-h) + 0deg), calc(var(--main-bg-color-s) + 0%), calc(var(--main-bg-color-l) + 5%), calc(var(--main-bg-color-a) + -0.3));
+}
+
+.listResult {
+  flex: 3;
+}

@@ -1,9 +1,19 @@
+@import './colors2';
 
-@mixin container_flex($width: 100%, $max-width: 1024px, $gap: 20px) {
- display: flex;
- justify-content: space-between; 
- width: $width;
- margin: 0 auto;
- max-width: $max-width;
- gap: $gap;
+@mixin define-color($title, $color) {
+    --#{$title}-h: #{hue($color)};
+    --#{$title}-l: #{lightness($color)};
+    --#{$title}-s: #{saturation($color)};
+    --#{$title}-a: #{alpha($color)};
+}
+
+
+
+@function color($title, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
+    @return hsla(
+        calc(var(--#{$title}-h) + #{$hue}), 
+        calc(var(--#{$title}-s) + #{$saturation}),
+        calc(var(--#{$title}-l) + #{$lightness}),
+        calc(var(--#{$title}-a) + #{$alpha}),
+    );
 }

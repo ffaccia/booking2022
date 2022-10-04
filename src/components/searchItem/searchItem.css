@@ -1,0 +1,100 @@
+.searchItem {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.siImg {
+  width: 200px;
+  aspect-ratio: 1/1;
+  margin: 0.8rem;
+}
+
+.siDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 2;
+}
+.siDesc h1 {
+  color: var(--main-color);
+  letter-spacing: -2px;
+  font-size: 1.7rem;
+  margin-top: 0.3rem;
+}
+.siDesc .siDistance {
+  font-size: 0.9rem;
+}
+.siDesc .siTaxiOp {
+  background: green;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 0.4rem 0.2rem 0.4rem 0.2rem;
+  width: 33%;
+}
+.siDesc .siSubtitle {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.siDesc .siFeatures {
+  font-size: 0.8rem;
+}
+.siDesc .siCancelOp {
+  color: green;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.siDesc .siCancelOpSubtitle {
+  color: green;
+  font-size: 0.85rem;
+}
+
+.siDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+}
+.siDetails .siRating {
+  display: flex;
+  justify-content: space-between;
+}
+.siDetails .siRating span {
+  font-weight: 600;
+  padding: 0.8rem 0 0.8rem 0.8rem;
+}
+.siDetails .siRating button {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--main-bg-color);
+  color: white;
+  margin: 0.6rem;
+  border: none;
+}
+.siDetails .siDetailTexts {
+  display: flex;
+  flex-direction: column;
+}
+.siDetails .siDetailTexts .siPrice {
+  font-size: 1.7rem;
+  text-align: end;
+  margin-right: 0.6rem;
+}
+.siDetails .siDetailTexts .siTaxOp {
+  font-size: 0.8rem;
+  text-align: end;
+  margin-right: 0.6rem;
+  color: gray;
+}
+.siDetails .siDetailTexts .siCheckButton {
+  background: var(--main-color);
+  color: white;
+  font-weight: 900;
+  border-radius: 5px;
+  width: 90%;
+  height: 2rem;
+  margin: 1rem auto;
+}

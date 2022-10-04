@@ -1,0 +1,128 @@
+.searchItem{
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.siImg{
+    width: 200px;
+    aspect-ratio: 1/1;
+    margin: .8rem;
+}
+
+.siDesc{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    flex: 2;
+    //border: 1px solid gray;
+
+    h1{
+        color: var(--main-color);
+        letter-spacing: -2px;
+        font-size: 1.7rem;
+        margin-top: .3rem;
+    }
+
+    .siDistance{
+        font-size: .9rem;
+    }
+
+    .siTaxiOp{
+        background: green;
+        color: white;
+        font-size: .8rem;
+        font-weight: 700;
+        border-radius: 6px;
+        padding: .4rem .2rem .4rem .2rem;
+        width: 33%;
+    }
+
+    .siSubtitle{
+        font-weight: 700;
+        font-size: .85rem;
+    }
+
+    .siFeatures{
+        font-size: .8rem;
+    }
+
+    .siCancelOp{
+        color: green;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+
+    .siCancelOpSubtitle{
+        color: green;
+        font-size: .85rem;
+    }
+
+
+
+
+}
+
+.siDetails{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25%;
+
+    .siRating{
+        //border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+        //align-self: flex-start;
+
+        span {
+            font-weight: 600;
+            padding: .8rem 0 .8rem .8rem;
+        }
+
+        button {
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--main-bg-color);
+            color: white;
+            margin: .6rem;
+            border: none;
+        }
+    }
+
+    .siDetailTexts {
+        display: flex;
+        flex-direction: column;
+        //align-self: flex-end;
+
+        .siPrice {
+            font-size: 1.7rem; 
+            text-align: end;
+            margin-right: .6rem;
+        }
+
+        .siTaxOp {
+            font-size: .8rem;
+            text-align: end;
+            margin-right: .6rem;
+            color: gray;
+        }
+
+        .siCheckButton {
+            background: var(--main-color);
+            color: white;
+            font-weight: 900;
+            border-radius: 5px;
+            width: 90%; //max-content;
+            height: 2rem;
+            margin: 1rem auto;
+        }
+
+
+    }
+
+}
+
+
+  
