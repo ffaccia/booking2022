@@ -32,8 +32,8 @@
   font-size: 0.8rem;
   font-weight: 700;
   border-radius: 6px;
-  padding: 0.4rem 0.2rem 0.4rem 0.2rem;
-  width: 33%;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  width: max-content;
 }
 .siDesc .siSubtitle {
   font-weight: 700;
@@ -66,7 +66,7 @@
   font-weight: 600;
   padding: 0.8rem 0 0.8rem 0.8rem;
 }
-.siDetails .siRating button {
+.siDetails .siRating button.rating {
   width: 2rem;
   height: 2rem;
   background-color: var(--main-bg-color);
@@ -90,11 +90,16 @@
   color: gray;
 }
 .siDetails .siDetailTexts .siCheckButton {
+  width: max-content;
+  height: 3rem;
+  background-color: var(--main-bg-color);
+  color: white;
+  margin: 0.6rem;
+  border: none;
   background: var(--main-color);
   color: white;
   font-weight: 900;
   border-radius: 5px;
   width: 90%;
-  height: 2rem;
   margin: 1rem auto;
 }
