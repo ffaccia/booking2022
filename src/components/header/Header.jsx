@@ -8,6 +8,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
+import CoronaVirus from "../extras/coronavirus/CoronaVirus";
 
 const Header = ({ type }) => {
 
@@ -45,6 +46,9 @@ const Header = ({ type }) => {
 
     return (
         <div className="header">
+            
+            <CoronaVirus />
+
             <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
                 <div className="headerList">
                     <div className="headerListItem active">
@@ -69,13 +73,18 @@ const Header = ({ type }) => {
                     </div>
                 </div>
 
+                            
                 {type != "list" &&
                     <>
                         <h1 className="headerTitle">A lifetime of discounts? It's genius</h1>
+
+
+
                         <p className="headerDesc">
                             Get rewarded for your travels - unlock instant saving of 10% or more with
                             a lamabooking account
                         </p>
+
                         <button className="headerBtn">Sign in / Register</button>
 
                         <div className="headerSearch">
@@ -102,6 +111,7 @@ const Header = ({ type }) => {
                                 />}
 
                             </div>
+
 
                             <div className="headerSearchItem">
                                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />

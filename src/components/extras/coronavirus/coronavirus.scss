@@ -1,0 +1,37 @@
+.coronaVirusInfo {
+    height: 3 rem;
+    width: 100%;
+    background: #fff0f0;
+    border: 1px solid #febb02;
+    
+
+    .firstRow {
+        display: flex;
+        //justify-content: space-around;
+        margin: 0 16rem;
+        
+    }
+
+    svg {
+        padding: 6px 10px 6px 6px;
+        //align-content: flex-start;
+        //display: inline;
+    }
+
+
+    h3 {
+        font-family: Geneva, Verdana, sans-serif;
+        margin-top: .4rem;
+        color: black;
+
+    }
+
+    .coronaVirusIndication {
+        margin: 0 18.4rem 1rem;
+        font-family: Geneva, Verdana, sans-serif;
+        font-weight: 300;
+        margin-top: .4rem;
+        color: black;
+    }
+}
+
