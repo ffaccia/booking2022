@@ -2,8 +2,8 @@
     height: 3 rem;
     width: 100%;
     background: #fff0f0;
-    border: 1px solid #febb02;
-    
+    border: 1px solid rgba(#febb02, .2);
+    position: relative;
 
     .firstRow {
         display: flex;
@@ -32,6 +32,14 @@
         font-weight: 300;
         margin-top: .4rem;
         color: black;
+    }
+
+    .coronaVirusXMark{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: black;
+        z-index: 9999;
     }
 }
 

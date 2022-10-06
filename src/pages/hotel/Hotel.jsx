@@ -5,7 +5,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import MailList from "../../components/mailList/MailList";
 import CheckButton from "../../components/buttons/CheckButton";
-
+import { useState } from  'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleArrowLeft,
@@ -17,6 +17,7 @@ import {
 import "./hotel.css";
 
 const Hotel = () => {
+
 
     const photos = [
         {
@@ -39,11 +40,49 @@ const Hotel = () => {
         },
       ];
     
-    return (
+      const [slideNumber, setSlideNumber] = useState(0)
+      const [openModal, setOpenModal] = useState(false)
+
+      const handleOpen = (i) => {
+        setSlideNumber(i)
+        setOpenModal(true)
+      };
+    
+      const handleMove = (direction) => {
+        let newSlideNumber;
+        console.log(direction);
+ 
+        if (direction === 'l') {
+            newSlideNumber = slideNumber===0 ? photos.length-1 : slideNumber-1
+        } else {
+            newSlideNumber = slideNumber===photos.length-1 ? 0 : slideNumber+1
+        }
+
+        setSlideNumber(newSlideNumber)
+      }
+
+
+
+            
+      return (
         <div>
             <Navbar />
             <Header type="list" />
-            <div className="hotelContainer">
+
+                {openModal && (<div className="slider">
+
+                            <FontAwesomeIcon id="arrowLeft" icon={faCircleArrowLeft}  onClick={() => handleMove("l")} className="slider-arrow slider-arrow-left"/>
+        
+                            <FontAwesomeIcon id="arrowClose" icon={faCircleXmark} onClick={() => setOpenModal(false)} className="slider-xmark slider-xmark-close" />
+                            <div className="sliderWrapper">
+                                <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+                            </div>
+
+                        <FontAwesomeIcon id="arrowRight" icon={faCircleArrowRight} onClick={() => handleMove("r")} className="slider-arrow slider-arrow-right" />
+
+                </div>)}
+
+                <div className="hotelContainer">
                 <div className="hotelWrapper">
                     <div className="hotelDesc">
                         <div className="hotelTitle">
@@ -70,6 +109,7 @@ const Hotel = () => {
                         {photos.map((photo, i) => (
                             <div className="hotelImageWrapper" key={i}>
                                 <img src={photo.src} alt="" 
+                                    onClick={() => handleOpen(i)}
                                     className="hotelImg" 
                                 />
                             </div>
@@ -115,3 +155,4 @@ const Hotel = () => {
 }
 
 export default Hotel
+
