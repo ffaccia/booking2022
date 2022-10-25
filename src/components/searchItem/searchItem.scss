@@ -1,3 +1,24 @@
+@import '../../config/colors.css';
+//@import '../../config/mixins';
+
+
+
+@mixin define-color($title, $color) {
+    --#{$title}-h: #{hue($color)};
+    --#{$title}-l: #{lightness($color)};
+    --#{$title}-s: #{saturation($color)};
+    --#{$title}-a: #{alpha($color)};
+}
+
+@function color($title, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
+    @return hsla(
+        calc(var(--#{$title}-h) + #{$hue}), 
+        calc(var(--#{$title}-s) + #{$saturation}),
+        calc(var(--#{$title}-l) + #{$lightness}),
+        calc(var(--#{$title}-a) + #{$alpha}),
+    );
+}
+
 .searchItem{
     display: flex;
     border: 1px solid lightgray;
@@ -57,6 +78,7 @@
     .siCancelOpSubtitle{
         color: green;
         font-size: .85rem;
+        padding-bottom: .5rem;
     }
 
 
@@ -123,12 +145,16 @@
             font-weight: 900;
             border-radius: 5px;
             width: 90%; //max-content;
-       
+            cursor: pointer;
             margin: 1rem auto;
         }
         
-
+        button.siCheckButton:hover{
+            background: color("main-bg-color",  $alpha: -0.1);  
+            //color("primary"); 
+        }
     }
+
 
 }
 

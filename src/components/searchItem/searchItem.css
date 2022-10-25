@@ -1,3 +1,4 @@
+@import '../../config/colors.css';
 .searchItem {
   display: flex;
   border: 1px solid lightgray;
@@ -50,6 +51,7 @@
 .siDesc .siCancelOpSubtitle {
   color: green;
   font-size: 0.85rem;
+  padding-bottom: 0.5rem;
 }
 
 .siDetails {
@@ -101,5 +103,9 @@
   font-weight: 900;
   border-radius: 5px;
   width: 90%;
+  cursor: pointer;
   margin: 1rem auto;
+}
+.siDetails .siDetailTexts button.siCheckButton:hover {
+  background: hsla(calc(var(--main-bg-color-h) + 0deg), calc(var(--main-bg-color-s) + 0%), calc(var(--main-bg-color-l) + 0%), calc(var(--main-bg-color-a) + -0.1));
 }
