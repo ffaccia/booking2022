@@ -1,20 +1,20 @@
-import React from 'react'
-import { useState } from 'react'
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { format } from "date-fns";
+import "./list.css"
 import Navbar from '../../components/navbar/Navbar'
 import Header from '../../components/header/Header'
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState } from 'react'
+import { format } from "date-fns";
 import SearchItem from '../../components/searchItem/SearchItem'
 import { DateRange } from 'react-date-range';
 import useFetch from "../../hooks/useFetch.js"
-import "./list.css"
+
 
 
 const List = () => {
 
     const location = useLocation()
     const [destination, setDestination] = useState(location.state.destination)
-    const [date, setDate] = useState(location.state.date)
+    const [dates, setDates] = useState(location.state.dates)
     const [options, setOptions] = useState(location.state.options)
     const [openDate, setOpenDate] = useState(false)
     const [min, setMinPrice] = useState(undefined)
@@ -27,15 +27,15 @@ const List = () => {
     const limit_ = limit || 20
 
     const url = `/hotels/findHotel?city=${city}&min=${min_}&max=${max_}&limit=${limit_}`
-    console.log(url)
-    const { data, loading, error, refetch } = useFetch(url)
+    //console.log(url)
+    const { data, loading, error } = useFetch(url)
     //useFetch(`/hotels/findHotel?city=${encodeURIComponent()}`)
 
     const handleSearch = () => {
-        refetch()
+        //refetch()
     }
 
-    console.log(data)
+    //console.log(data)
 
 
     return (
@@ -57,11 +57,13 @@ const List = () => {
                         </div>
                         <div className="lsItem">
                             <label htmlFor="checkin-date-id">Check-in Date</label>
-                            <span className="setDateList" onClick={() => setOpenDate(!openDate)}>{format(date[0].startDate, "MM/dd/yyyy")} to {format(date[0].endDate, "MM/dd/yyyy")}</span>
+                            <span className="setDateList" onClick={() => setOpenDate(!openDate)}>
+                                {format(dates[0].startDate, "MM/dd/yyyy")} to 
+                                {format(dates[0].endDate, "MM/dd/yyyy")}</span>
                             {openDate && (<DateRange
                                 editableDateInputs={true}
-                                onChange={(item) => setDate([item.selection])}
-                                ranges={date}
+                                onChange={(item) => setDates([item.selection])}
+                                ranges={dates}
                                 minDate={new Date()}
                             />
                             )}

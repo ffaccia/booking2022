@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
@@ -14,6 +14,8 @@ import {
     faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch.js"
+import { SearchContext } from "../../context/SearchContext.js"
+import { getDaysDateDiff } from "../../hooks/utils.js"
 
 import "./hotel.css";
 
@@ -24,17 +26,13 @@ const Hotel = () => {
     const hotelId = location.pathname.split("/")[2].toString()
     console.log(hotelId)
 
-    //const { data, loading, error } = useFetch(`/api/hotels/select/${hotelId}`)
-    //const { data, loading, error } = useFetch("/api/hotels/select/63456151f9e39cc71a82225c")
-    //const { data, loading, error } = useFetch("/api/hotels/findHotel?_id=63456151f9e39cc71a82225c")
+    const { data, loading, error } = useFetch(`/hotels/select/${hotelId}`)
+    //console.log(data)
 
-    const { data, loading, error } =
-        useFetch("/hotels/countbycities?cities=dublin,moscow,london,rome,milan,paris")
-
-    console.log("/api/hotels/select/63456151f9e39cc71a82225c")
-    console.log("/api/hotels/findHotel?_id=63456151f9e39cc71a82225c")
-
-    console.log(data)
+    const { dates } = useContext(SearchContext)
+    console.log("dates is ", dates)
+    const days = getDaysDateDiff(dates[0].endDate, dates[0].startDate);
+    console.log("days diff ", days)
 
     const photos = [
         {

@@ -1,6 +1,6 @@
 import "./header.css"
-import React from 'react'
-import { useState } from 'react'
+//import ScriptTag from 'react-script-tag';
+import React, { useState, useContext } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
 import { faBed, faPlane, faCar, faLandmark, faTaxi, faCalendarDays, faPerson } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,14 +9,25 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
 import CoronaVirus from "../extras/coronavirus/CoronaVirus";
+import { SearchContext } from "../../context/SearchContext.js"
+import useScript from '../../hooks/useScript';
+
+function CallScriptConditionally({scriptName}) {
+    console.log("called script ", scriptName)
+    //useScript('./optionsVerify.js');
+    useScript(scriptName);
+    return null;
+}
 
 const Header = ({ type }) => {
+
+    //useScript('./headerSubmitVerify.js');
 
     const [destination, setDestination] = useState(false)
 
     const [openDate, setOpenDate] = useState(false)
 
-    const [date, setDate] = useState([
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: new Date(),
@@ -39,14 +50,19 @@ const Header = ({ type }) => {
         })
     }
 
+    const { dispatch } = useContext(SearchContext)
     const navigate = useNavigate()
 
-    const handleSearch = () => { navigate("/hotels", { state: { destination, date, options } }) }
+    const handleSearch = () => {
+        dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+        navigate("/hotels", { state: { destination, dates, options } })
+    }
+
 
 
     return (
         <div className="header">
-            
+
             <CoronaVirus />
 
             <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
@@ -73,9 +89,10 @@ const Header = ({ type }) => {
                     </div>
                 </div>
 
-                            
+
                 {type != "list" &&
-                    <>
+                    <>  <CallScriptConditionally scriptName='./headerSubmitVerify.js' />
+                        
                         <h1 className="headerTitle">A lifetime of discounts? It's genius</h1>
 
 
@@ -99,13 +116,13 @@ const Header = ({ type }) => {
                             <div className="headerSearchItem">
                                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                                 <span onClick={() => setOpenDate(!openDate)} className="headerSearchText headerSearchDate2Date">
-                                    {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}
+                                    {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")} `}
                                 </span>
                                 {openDate && <DateRange
                                     editableDateInputs={true}
-                                    onChange={(item) => setDate([item.selection])}
+                                    onChange={(item) => setDates([item.selection])}
                                     moveRangeOnFirstSelection={false}
-                                    ranges={date}
+                                    ranges={dates}
                                     className="headerSearchDate"
                                     minDate={new Date()}
                                 />}
@@ -125,9 +142,9 @@ const Header = ({ type }) => {
                                         <div className="optionCounter">
                                             <button
                                                 disabled={options.adult < 1}
-                                                className="optionCounterButton" onClick={() => handleOptions('adult', 'd')}>-</button>
+                                                className="optionCounterButton buttonMinus" onClick={() => handleOptions('adult', 'd')}>-</button>
                                             <span className="optionCounterNumber">{options.adult}</span>
-                                            <button className="optionCounterButton" onClick={() => handleOptions('adult', 'i')}>+</button>
+                                            <button className="optionCounterButton buttonPlus" onClick={() => handleOptions('adult', 'i')}>+</button>
                                         </div>
                                     </div>
 
@@ -136,10 +153,10 @@ const Header = ({ type }) => {
                                         <div className="optionCounter">
                                             <button
                                                 disabled={options.children < 1}
-                                                className="optionCounterButton" onClick={() => handleOptions('children', 'd')}>-</button>
+                                                className="optionCounterButton buttonMinus" onClick={() => handleOptions('children', 'd')}>-</button>
                                             {/*<span className="optionCounterNumber">{options.children.toString().padStart(2)}</span> */}
                                             <span className="optionCounterNumber">{options.children}</span>
-                                            <button className="optionCounterButton" onClick={() => handleOptions('children', 'i')}>+</button>
+                                            <button className="optionCounterButton buttonPlus" onClick={() => handleOptions('children', 'i')}>+</button>
                                         </div>
                                     </div>
 
@@ -148,16 +165,19 @@ const Header = ({ type }) => {
                                         <div className="optionCounter">
                                             <button
                                                 disabled={options.room < 1}
-                                                className="optionCounterButton" onClick={() => handleOptions('room', 'd')}>-</button>
+                                                className="optionCounterButton buttonMinus" onClick={() => handleOptions('room', 'd')}>-</button>
                                             <span className="optionCounterNumber">{options.room}</span>
-                                            <button className="optionCounterButton" onClick={() => handleOptions('room', 'i')}>+</button>
+                                            <button className="optionCounterButton buttonPlus" onClick={() => handleOptions('room', 'i')}>+</button>
                                         </div>
                                     </div>
+
+                                <CallScriptConditionally scriptName='./optionsVerify.js'/>
+
                                 </div>}
                             </div>
 
                             <div className="headerSearchItem">
-                                <button className="headerBtn" onClick={handleSearch}>Search</button>
+                                <button id="handleSearch" className="headerBtn" onClick={handleSearch}>Search</button>
                             </div>
 
                         </div>
