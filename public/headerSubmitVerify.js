@@ -86,7 +86,7 @@ window.addEventListener('load', (event) => {
             function addMultipleEventListener(el, events_list) {
                 events_list.split(" ").forEach(function (ev) {
                     el.addEventListener(ev, checkSubmit1)
-                    //console.log(el, ev)
+                    console.log(el, ev)
                 })
             }
             addMultipleEventListener(inputs[i], "input change keypress focusout")

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import '../../config/colors.css';
+//@import '../../config/mixins';
+
+
+
+@mixin define-color($title, $color) {
+    --#{$title}-h: #{hue($color)};
+    --#{$title}-l: #{lightness($color)};
+    --#{$title}-s: #{saturation($color)};
+    --#{$title}-a: #{alpha($color)};
+}
+
+@function color($title, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
+    @return hsla(
+        calc(var(--#{$title}-h) + #{$hue}), 
+        calc(var(--#{$title}-s) + #{$saturation}),
+        calc(var(--#{$title}-l) + #{$lightness}),
+        calc(var(--#{$title}-a) + #{$alpha}),
+    );
+}
+
+:root {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.lContainer {
+    height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    //border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormWrapper {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.captionLoginForm {
+    text-align: center;
+}
+
+form.loginForm {
+    width: 40%;
+    margin: 0 auto;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: .5rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    //font-size: 1.5rem;
+}
+
+.loginInput{
+  height: 35px;
+  width: 80%;
+  box-shadow: 5px 5px 8px #888888;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: .3rem;
+}
+
+button.loginSubmit{
+  height: 44px;
+  padding: 10px;
+  width: 82%;
+  border-radius: 5px;
+  background: color("main-bg-color");  
+  color: white;  
+  padding: .3rem;
+  text-align: center;
+  box-shadow: 5px 5px 8px #888888;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+
+  &:hover {
+      //background: red;
+      cursor: pointer;
+      background: color("main-bg-color", $hue: 100deg, $lightness: 30%);
+  }
+
+  &:disabled, &[disabled] {
+     background: color("main-bg-color", $lightness: +5%, $alpha: -0.3);
+  }
+}
+
+  //background: color("main-bg-color", $lightness: +5%, $alpha: -0.3);
+

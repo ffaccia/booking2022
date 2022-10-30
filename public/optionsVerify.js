@@ -93,7 +93,7 @@ try {
             events_list.split(" ").forEach(function (ev) {
                 var delta = el.className.indexOf("Plus") > -1 ? 1 : -1
                 el.addEventListener(ev, checkSubmit.bind(null, delta))
-                //console.log(el, ev)
+                console.log(el, ev)
             })
 
         }

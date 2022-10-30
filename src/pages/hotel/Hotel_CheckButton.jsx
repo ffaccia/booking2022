@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import Reserve from "../../components/reserve/Reserve";
 import MailList from "../../components/mailList/MailList";
-//import CheckButton from "../../components/buttons/CheckButton";
+import CheckButton from "../../components/buttons/CheckButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleArrowLeft,
@@ -15,7 +14,6 @@ import {
     faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch.js"
-import { AuthContext } from "../../context/AuthContext.js"
 import { SearchContext } from "../../context/SearchContext.js"
 import { getDaysDateDiff, formatter, formatter2, formatMoney } from "../../hooks/utils.js"
 
@@ -23,7 +21,6 @@ import "./hotel.css";
 
 const Hotel = () => {
 
-    const navigate = useNavigate()
     const location = useLocation()
     console.log(location)
     const hotelId = location.pathname.split("/")[2].toString()
@@ -33,9 +30,6 @@ const Hotel = () => {
     //console.log(data)
 
     const { dates, options } = useContext(SearchContext)
-    const { user } = useContext(AuthContext);
-
-
 
     console.log("dates is ", dates)
     const days = getDaysDateDiff(dates[0].endDate, dates[0].startDate);
@@ -65,7 +59,6 @@ const Hotel = () => {
 
     const [slideNumber, setSlideNumber] = useState(0)
     const [openModal, setOpenModal] = useState(false)
-    const [openModalRes, setOpenModalRes] = useState(false)
 
     const handleOpen = (i) => {
         setSlideNumber(i)
@@ -85,13 +78,10 @@ const Hotel = () => {
         setSlideNumber(newSlideNumber)
     }
 
-    const handleClick = () => {
-        if (user) {
-            setOpenModalRes(true);
-        } else {
-            navigate("/login");
-        }
-    };
+    const doPlural = (num, str) => {
+
+    } 
+
 
     return (
         <div>
@@ -129,7 +119,7 @@ const Hotel = () => {
                                     </div>
                                 </div>
                                 <div className="checkButtonWrapper">
-                                    <button className="siCheckButton" onClick={handleClick}>Reserve or Book Now!</button>
+                                    <CheckButton title="Reserve or Book Now!" reserve="true"/>
                                 </div>
                             </div>
 
@@ -170,9 +160,9 @@ const Hotel = () => {
                                         excellent location score of 9.8!
                                     </span>
                                     <h2>
-                                        <b>${formatMoney({ amount: totSpending, decimalCount: 0 })}</b> <span className="hotelDetailsPriceLighter">({days} nights)</span>
+                                        <b>${formatMoney({amount:totSpending, decimalCount:0})}</b> <span className="hotelDetailsPriceLighter">({days} nights)</span>
                                     </h2>
-                                    <button className="siCheckButton" onClick={handleClick}>Reserve or Book Now!</button>
+                                    <CheckButton title="Reserve or Book now!" reserve="true" />
                                 </div>
                             </div>
                         </div>
@@ -180,7 +170,6 @@ const Hotel = () => {
                 </>)}
             <MailList />
             <Footer />
-            {openModalRes && <Reserve setOpen={setOpenModalRes} hotelId={hotelId} />}
         </div>
     )
 }

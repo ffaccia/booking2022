@@ -1,4 +1,4 @@
-import "./header.css"
+
 //import ScriptTag from 'react-script-tag';
 import React, { useState, useContext } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
@@ -10,7 +10,9 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
 import CoronaVirus from "../extras/coronavirus/CoronaVirus";
 import { SearchContext } from "../../context/SearchContext.js"
+import { AuthContext } from "../../context/AuthContext.js"
 import useScript from '../../hooks/useScript';
+import "./header.css"
 
 function CallScriptConditionally({scriptName}) {
     console.log("called script ", scriptName)
@@ -50,15 +52,16 @@ const Header = ({ type }) => {
         })
     }
 
-    const { dispatch } = useContext(SearchContext)
+    const { dispatchSearch } = useContext(SearchContext)
     const navigate = useNavigate()
 
     const handleSearch = () => {
-        dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+        dispatchSearch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
         navigate("/hotels", { state: { destination, dates, options } })
     }
 
-
+    const { user } = useContext(AuthContext)
+    console.log("user vale ", user)
 
     return (
         <div className="header">

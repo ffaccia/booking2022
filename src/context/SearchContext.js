@@ -27,7 +27,7 @@ const SearchReducer = (state, action) => {
 };
 
 export const SearchContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
+    const [state, dispatchSearch] = useReducer(SearchReducer, INITIAL_STATE);
     console.log("children")
     console.log(children)
 
@@ -37,7 +37,7 @@ export const SearchContextProvider = ({ children }) => {
                 city: state.city,
                 dates: state.dates,
                 options: state.options,
-                dispatch,
+                dispatchSearch,
             }}
         >
             {children}

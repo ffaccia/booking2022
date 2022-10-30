@@ -210,3 +210,20 @@ span.middot {
     display: flex;
     flex-direction: column;
 }
+
+.siCheckButton {
+    width: max-content;
+    padding: 0 .4rem 0 .4rem;
+    height: 3rem;
+    background-color: var(--main-bg-color);
+    color: white;
+    margin: .6rem;
+    border: none;            
+    background: var(--main-color);
+    color: white;
+    font-weight: 900;
+    border-radius: 5px;
+    //width: 90%; //max-content;
+
+    margin: 1rem auto;
+}
