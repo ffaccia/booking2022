@@ -1,0 +1,85 @@
+div.lContainer {
+  background: #ccc;
+  background-image: url(images/reactlogo.png);
+  background-repeat: no-repeat;
+  background-position: 110% 75%;
+  background-size: 250px;
+  width: 70vw;
+  height: 70vh;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: inherit;
+  width: 100%;
+}
+
+.navbar img {
+  align-self: flex-start;
+  margin-left: 20px;
+}
+
+.navbar ol {
+  align-self: flex-end;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  list-style: none;
+  display: flex;
+}
+
+.navbar ol li {
+  padding: 0.9rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.navbar ol li:hover {
+  background: yellow;
+}
+
+ol.reasons {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  counter-reset: li-counter;
+}
+
+ol.reasons > li {
+  padding: 0.9rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  counter-increment: li-counter;
+}
+
+ol.reasons > li:before {
+  content: counter(li-counter);
+  color: #61dafb;
+  font-size: 1.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.lContainer h1 {
+  font-weight: 900;
+  font-size: 3rem;
+  margin-left: 2rem;
+}
+
+img.imgBack {
+  position: absolute;
+  top: 110px;
+  right: 50px;
+  width: 20%;
+  overflow: hidden;
+}
